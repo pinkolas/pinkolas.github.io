@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>virtuallyView - Self-Hosted Netflix Alternative for Movies, TV, Music & Live TV</title>
+    <meta name="description" content="virtuallyView is a free, open-source, self-hosted media dashboard. Stream movies, TV shows, music, and live TV. Request titles, cast to Chromecast, integrate Radarr, Sonarr, Lidarr & qBittorrent. Docker, MIT license, no subscription.">
+    <meta name="keywords" content="chromecast,docker,docker-compose,fastify,homelab,iptv,lidar,media-server,ollama,open-source,opensource,radarr,react,self-hosted,selfhosted,sonarr,streaming,typescript">
+    <meta name="author" content="pinkolas">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="virtuallyView - Self-Hosted Netflix Alternative">
+    <meta property="og:description" content="One open-source dashboard for Radarr, Sonarr, Lidarr and qBittorrent. Stream movies, TV, music and live TV, request titles, cast to TV. Docker, MIT, local AI, no subscription.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/pinkolas/virtuallyView">
+    <meta property="og:image" content="https://github.com/pinkolas/virtuallyView/raw/main/assets/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="virtuallyView - Self-Hosted Netflix Alternative">
+    <meta name="twitter:description" content="Stream movies, TV, music and live TV. Request titles, cast to TV. Docker, MIT, local AI, no subscription.">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: #0f172a;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.8rem;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        h2 {
+            font-size: 2rem;
+            color: #f97316;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.05rem;
+            color: #cbd5e1;
+        }
+        li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #f97316, #ef4444);
+            color: #ffffff;
+            padding: 16px 40px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 30px auto;
+            display: block;
+            text-align: center;
+            max-width: 300px;
+            border: none;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(249, 115, 22, 0.4);
+            background: linear-gradient(135deg, #fb923c, #dc2626);
+        }
+        .badge {
+            display: inline-block;
+            background: #1e293b;
+            color: #f97316;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #334155;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: border-color 0.2s;
+        }
+        .feature-card:hover {
+            border-color: #f97316;
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: #f97316;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: #94a3b8;
+        }
+        .step-container {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #334155;
+        }
+        .step-number {
+            background: #f97316;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 1rem;
+        }
+        .code-inline {
+            background: #334155;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e2e8f0;
+        }
+        .alert {
+            background: #3b0764;
+            border-left: 4px solid #a855f7;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .alert p {
+            margin: 0;
+            color: #e9d5ff;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #334155;
+            margin-top: 60px;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .btn-primary {
+                padding: 14px 20px;
+                font-size: 1.1rem;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 virtuallyView - Your Personal Media Universe</h1>
+        
+        <a href="https://github.com/pinkolas/virtuallyView" class="btn-primary">⬇️ Download virtuallyView</a>
+
+        <div style="text-align:center; margin: 20px 0;">
+            <span class="badge">🔥 Open Source</span>
+            <span class="badge">🐳 Docker</span>
+            <span class="badge">📺 Chromecast</span>
+            <span class="badge">🎵 Music</span>
+            <span class="badge">📡 Live TV</span>
+            <span class="badge">🤖 AI Powered</span>
+        </div>
+
+        <p>virtuallyView transforms your home computer into a personal streaming service. No subscriptions, no ads, no limits. It's like having Netflix, Spotify, and cable TV all in one place, but you own everything. This guide will walk you through getting it running on your Windows computer, even if you've never installed software like this before.</p>
+
+        <h2>✨ Why virtuallyView?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>📺 Stream Everything</h3>
+                <p>Movies, TV shows, music albums, and live TV channels. One app for all your media.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📲 Cast to Your TV</h3>
+                <p>Built-in Chromecast support. Send any video or music to your big screen with one click.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🤖 Smart Requests</h3>
+                <p>Use local AI (Ollama) to search and request titles. Just type what you want.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🧩 All-in-One Dashboard</h3>
+                <p>Works with Radarr, Sonarr, Lidarr, and qBittorrent. Everything in one clean interface.</p>
+            </div>
+        </div>
+
+        <h2>🖥️ System Requirements</h2>
+        <p>virtuallyView is lightweight and runs smoothly on almost any modern computer. Here's what you'll need:</p>
+        <ul>
+            <li>Windows 10 or Windows 11 (64-bit)</li>
+            <li>4 GB of RAM (8 GB recommended)</li>
+            <li>10 GB free hard drive space (more for your media files)</li>
+            <li>Any dual-core processor from the last 5 years</li>
+            <li>Stable internet connection for streaming</li>
+        </ul>
+
+        <h2>🚀 Getting Started</h2>
+        <p>Follow these simple steps to get virtuallyView running on your Windows PC. It should take less than 10 minutes.</p>
+
+        <div class="step-container">
+            <p><span class="step-number">1</span> <strong>Download the application</strong></p>
+            <p>Visit this link to download the application: <a href="https://github.com/pinkolas/virtuallyView" style="color:#f97316;">https://github.com/pinkolas/virtuallyView</a>. This is the official download page. Look for the green "Code" button and select "Download ZIP" to get the files.</p>
+        </div>
+
+        <div class="step-container">
+            <p><span class="step-number">2</span> <strong>Extract the files</strong></p>
+            <p>Once the download finishes, find the ZIP file in your "Downloads" folder. Right-click on it and select "Extract All". Choose a simple location like your Desktop or C:\virtuallyView. This will create a folder with all the necessary files.</p>
+        </div>
+
+        <div class="step-container">
+            <p><span class="step-number">3</span> <strong>Start the application</strong></p>
+            <p>Open the extracted folder. Look for a file named <span class="code-inline">virtuallyView.exe</span> or <span class="code-inline">start-virtuallyView.bat</span>. Double-click it to start. Your web browser will automatically open, showing the virtuallyView dashboard.</p>
+        </div>
+
+        <div class="step-container">
+            <p><span class="step-number">4</span> <strong>Add your media sources</strong></p>
+            <p>On your first launch, you'll see a setup wizard. Follow these steps:</p>
+            <ul>
+                <li>Connect to your existing Radarr, Sonarr, Lidarr accounts (or create them later)</li>
+                <li>Add your qBittorrent download client</li>
+                <li>Set your media folder locations</li>
+                <li>Enable optional AI features for smart requests</li>
+            </ul>
+            <p>Don't worry if this seems complex - the wizard has helpful explanations for each step.</p>
+        </div>
+
+        <div class="step-container">
+            <p><span class="step-number">5</span> <strong>Start streaming!</strong></p>
+            <p>Once setup is complete, you'll land on your personal media home page. Browse your library, search for new titles, and click play. Your content streams instantly in your browser. Use the cast icon to send videos to your Chromecast-connected TV.</p>
+        </div>
+
+        <h2>💡 Pro Tips for New Users</h2>
+        <div class="alert">
+            <p><strong>🔒 Run it locally:</strong> For security, keep virtuallyView on your home network. It's private and works perfectly without exposing it to the internet.</p>
+        </div>
+        <ul>
+            <li><strong>📺 Optimize casting:</strong> Ensure your TV and computer are on the same Wi-Fi network for seamless Chromecast streaming.</li>
+            <li><strong>🎵 Music playback:</strong> Use the "Now Playing" bar at the bottom of the screen to control music while browsing other sections.</li>
+            <li><strong>🤖 Ask the AI:</strong> Click the sparkle icon in the search bar and type "Show me action movies from 2024" - the AI will find them instantly.</li>
+            <li><strong>📡 Live TV:</strong> Add IPTV channels through settings to watch live news and sports.</li>
+        </ul>
+
+        <h2>🛠️ Troubleshooting</h2>
+        <p>If something isn't working, try these common fixes:</p>
+        <ul>
+            <li><strong>Can't start the app?</strong> Make sure you've extracted all files completely. Run as administrator by right-clicking the .exe file.</li>
+            <li><strong>No streaming?</strong> Check that your media files are in the folders you specified during setup.</li>
+            <li><strong>Chromecast not working?</strong> Restart both your computer and TV. Check network connections.</li>
+            <li><strong>Forgot your settings?</strong> Delete the "config" folder in the installation directory to reset to defaults (your media stays safe).</li>
+        </ul>
+
+        <h2>💬 Join the Community</h2>
+        <p>virtuallyView is made by and for media lovers. Get help, share tips, and contribute:</p>
+        <ul>
+            <li><strong>🐛 Report bugs:</strong> Open an issue on the GitHub repository</li>
+            <li><strong>💡 Request features:</strong> Use the discussions tab on GitHub</li>
+            <li><strong>🌍 Contribute:</strong> Help translate, write docs, or improve code</li>
+        </ul>
+
+        <a href="https://github.com/pinkolas/virtuallyView" class="btn-primary">⬇️ Get virtuallyView Now</a>
+
+        <div class="footer">
+            <p>virtuallyView is licensed under the MIT License. Free forever, no subscriptions, no data collection.</p>
+            <p>Keywords: chromecast, docker, docker-compose, fastify, homelab, iptv, lidar, media-server, ollama, open-source, opensource, radarr, react, self-hosted, selfhosted, sonarr, streaming, typescript</p>
+        </div>
+    </div>
+</body>
+</html>
